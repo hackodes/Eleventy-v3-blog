@@ -1,4 +1,4 @@
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   // Copy assets to output directory
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addWatchTarget("src/assets");
@@ -8,7 +8,7 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/posts/**/*.md");
   });
 
-  // Add a simple date format filter as fallback
+  // Simple date format filter
   eleventyConfig.addFilter("simpleDate", (dateObj) => {
     return dateObj.toLocaleDateString('en-US', {
       year: 'numeric',
@@ -28,4 +28,4 @@ module.exports = function(eleventyConfig) {
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk"
   };
-};
+}
