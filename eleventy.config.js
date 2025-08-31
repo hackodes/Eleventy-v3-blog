@@ -9,6 +9,10 @@ export default function (eleventyConfig) {
     },
   })
 
+  // Copy assets to output directory
+  eleventyConfig.addPassthroughCopy('src/assets')
+  eleventyConfig.addWatchTarget('src/assets')
+
   // Explicitly create a "posts" collection from the posts directory
   eleventyConfig.addCollection('posts', function (collectionApi) {
     return collectionApi.getFilteredByGlob('src/posts/**/*.md')
