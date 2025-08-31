@@ -1,0 +1,20 @@
+{
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "htmlWhitespaceSensitivity": "css",
+    "vueIndentScriptAndStyle": true,
+    "endOfLine": "auto",
+    "printWidth": 120,
+    "overrides": [
+      {
+        "files": "*.html, *.njk, *.js",
+        "options": {
+          "parser": "html",
+          "htmlWhitespaceSensitivity": "strict"
+        }
+      }
+    ]
+  }
+  
