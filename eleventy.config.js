@@ -8,6 +8,16 @@ export default function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/posts/**/*.md");
   });
 
+    // Date formatter for permalinks (no quotes needed!)
+    eleventyConfig.addFilter("permalinkDate", (dateObj) => {
+      const date = new Date(dateObj);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}/${month}/${day}`;
+    });
+  
+
   // Simple date format filter
   eleventyConfig.addFilter("simpleDate", (dateObj) => {
     return dateObj.toLocaleDateString('en-US', {
@@ -16,6 +26,20 @@ export default function(eleventyConfig) {
       day: 'numeric'
     });
   });
+
+    // HTML date format (for datetime attribute)
+    eleventyConfig.addFilter("htmlDate", (dateObj) => {
+      const date = new Date(dateObj);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    });
+  
+    // Strip HTML tags for excerpts
+    eleventyConfig.addFilter("stripHtml", (content) => {
+      return content.replace(/<[^>]*>/g, '');
+    });
 
   return {
     dir: {
